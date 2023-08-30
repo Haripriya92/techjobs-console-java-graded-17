@@ -29,7 +29,6 @@ public class TechJobs {
 
         // Allow the user to search until they manually quit
         while (true) {
-
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
 
             if (actionChoice == null) {
@@ -119,7 +118,22 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.isEmpty()) {
+        System.out.print("No Results");
+        } else {
+            for (HashMap<String, String> row : someJobs) {
+                String[] choiceKeys = new String[row.size()];
+                int i = 0;
+                for (String choiceKey : row.keySet()) {
+                    choiceKeys[i] = choiceKey;
+                    i++;
+                }
+                    System.out.println("\n*****");
+                    for (int j = 0; j < choiceKeys.length; j++) {
+                        System.out.println(choiceKeys[j] + ": " + row.get(choiceKeys[j]));
+                    }
+                System.out.println("*****");
+            }
+        }
     }
 }
